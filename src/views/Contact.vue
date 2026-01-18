@@ -21,12 +21,12 @@
         <input type="email" class="form-control border-0" id="exampleFormControlInput1" placeholder="name@example.com">
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label fw-bold">Example textarea</label>
+        <label for="exampleFormControlTextarea1" class="form-label fw-bold">Detail</label>
         <textarea class="form-control border-0" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     <div class="d-flex justify-content-center gap-3 mt-4">
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-danger">Cancel</button>
 </div>
 </div>
 

@@ -32,12 +32,24 @@
 
         <li class="nav-item">
 
-          <a class="nav-link" href="/about">About</a>
+          <a class="nav-link" href="/Customer">Customer</a>
 
         </li>
          <li class="nav-item">
 
           <a class="nav-link" href="/Contact">Contact</a>
+
+        </li>
+
+         <li class="nav-item">
+
+          <a class="nav-link" href="/type">Type</a>
+
+        </li>
+
+         <li class="nav-item">
+
+          <a class="nav-link" href="/employee">Employee</a>
 
         </li>
 
