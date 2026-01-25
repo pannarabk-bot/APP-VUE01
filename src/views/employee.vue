@@ -2,6 +2,10 @@
   <div class="container mt-4">
     <h2 class="mb-3">ข้อมูลพนักงาน</h2>
     
+<div class="mb-3 text-end">
+    <a class="btn btn-primary" href="/add_employee" role="button">Add+</a>
+    </div>
+
     <!-- ตารางแสดงข้อมูลลูกค้า -->
     <table class="table table-bordered table-striped">
       <thead class="table-dark">
@@ -20,8 +24,10 @@
           <td>{{ employee.full_name }}</td>
           <td>{{ employee.department }}</td>
           <td>{{ employee.salary }}</td>
-          <td>{{ employee.active }}</td>
-          <td>{{ employee.created_at }}</td>
+          <td>
+            <span v-if="employee.active == 1">ปกติ</span>
+            <span v-else>ลาออก</span>
+          </td>
         </tr>
       </tbody>
     </table>
