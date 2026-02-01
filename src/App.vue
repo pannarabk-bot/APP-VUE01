@@ -53,6 +53,24 @@
 
         </li>
 
+        <li class="nav-item">
+
+          <a class="nav-link" href="/Customer_crud">Customer crud</a>
+
+        </li>
+
+         <li class="nav-item">
+
+          <a class="nav-link" href="/employee_crud">Employee crud</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="/type_crud">Type crud</a>
+
+        </li>
+
     
 
         <li class="nav-item dropdown">
