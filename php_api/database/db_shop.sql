@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2026 at 12:53 PM
+-- Generation Time: Feb 01, 2026 at 12:58 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -45,7 +45,8 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 (2, 'วิภา', 'สุขสันต์', '0898765432', 'wipa', 'wipa2025'),
 (3, 'John', 'Doe', '0991122334', 'johnd', 'securepwd'),
 (4, 'นารารัตน์', 'บุญขาว', '0123456789', '12345678@gmail.com', '$2y$10$4U0sRaTPtZ9iM'),
-(5, 'nararut', 'B', '0123456789', '123456789@gmail.com', '$2y$10$6P7zJsHZvCuOfvXFXlQHU.SsKO.ZNr6vVre3DtNdquD2zW5fnv1oC');
+(5, 'nararut', 'B', '0123456789', '123456789@gmail.com', '$2y$10$6P7zJsHZvCuOfvXFXlQHU.SsKO.ZNr6vVre3DtNdquD2zW5fnv1oC'),
+(7, 'nara', 'bo', '0123456789', 'nara', '$2y$10$Sg6FCAqnjeHIokXy3wY87.gzIJSupWanlW0yo.06qNpNNrhPsVzzW');
 
 -- --------------------------------------------------------
 
@@ -92,8 +93,7 @@ INSERT INTO `employees` (`emp_id`, `full_name`, `department`, `salary`, `active`
 (0000000003, 'อนันต์ สุขใจ', 'การตลาด', '25000.00', 0, '2026-01-18 10:27:09'),
 (0000000004, 'สุดา พรมดี', 'ทรัพยากรบุคคล', '32000.00', 1, '2026-01-18 10:27:09'),
 (0000000005, 'nararut', 'admin', '123456.00', 1, '2026-01-25 09:47:37'),
-(0000000006, 'nararut', 'account', '100000.00', 1, '2026-01-25 09:58:35'),
-(0000000007, 'nara', 'AD', '100000.00', 1, '2026-01-25 11:47:38');
+(0000000007, 'nara b', 'AD', '100000.00', 1, '2026-01-25 11:47:38');
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -195,7 +195,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `emp_id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `emp_id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -207,7 +207,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=5;
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
