@@ -4,7 +4,7 @@
     
 
      <div class="mb-3 text-start">
-      <a class="btn btn-primary" href="#" role="button">Add+</a>
+      <a class="btn btn-primary" href="/add_customer" role="button">Add+</a>
     </div>
     <!-- ตารางแสดงข้อมูลลูกค้า -->
     <table class="table table-bordered table-striped">

@@ -77,6 +77,56 @@
 
         </li>
 
+       <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            Employee
+
+          </a>
+
+          <ul class="dropdown-menu">
+
+            <li><a class="dropdown-item" href="employee">Employee</a></li>
+
+            <li><a class="dropdown-item" href="Employee_crud">Employee_crud</a></li>
+
+            <li><a class="dropdown-item" href="Employee_crud_image">Employee_crud_image</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+          </ul>
+
+        </li>
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            Product
+
+          </a>
+
+          <ul class="dropdown-menu">
+
+            <li><a class="dropdown-item" href="Product">Product</a></li>
+
+            <li><a class="dropdown-item" href="Product_api">Product_api</a></li>
+
+            <li><a class="dropdown-item" href="Product_crud">Product_crud</a></li>
+
+            <li><a class="dropdown-item" href="Show_product">Show_product</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+          </ul>
+
+        </li>
+
     
 
         <li class="nav-item dropdown">
