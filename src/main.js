@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as bootstrap from "bootstrap"; // ⭐ import ทั้งโมดูล
 window.bootstrap = bootstrap; // ✅ ผูกเข้ากับ global window object
 
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 createApp(App).use(store).use(router).mount('#app')
 

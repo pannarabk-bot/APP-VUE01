@@ -13,11 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action) {
             $description = $_POST['description'];
             $price = $_POST['price'];
             $stock = $_POST['stock'];
+            $category_id = $_POST['category_id'];
 
             // อัพโหลดไฟล์รูป
             $filename = null;
             if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-                $targetDir = "image/";
+                $targetDir = "uploads/";
                 if (!is_dir($targetDir)) {
                     mkdir($targetDir, 0777, true);
                 }
@@ -26,13 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action) {
                 move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
             }
 
-            $sql = "INSERT INTO products (product_name, description, price, stock, image)
-                    VALUES (:product_name, :description, :price, :stock, :image)";
+            $sql = "INSERT INTO products (product_name, description, price, stock,category_id, image)
+                    VALUES (:product_name, :description, :price, :stock,category_id, :image)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':product_name', $product_name);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':price', $price);
             $stmt->bindParam(':stock', $stock);
+            $stmt->bindParam(':category_id', $category_id);
             $stmt->bindParam(':image', $filename);
 
             if ($stmt->execute()) {
@@ -48,10 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action) {
             $description = $_POST['description'];
             $price = $_POST['price'];
             $stock = $_POST['stock'];
+            $category_id = $_POST['category_id'];
 
             // อัพโหลดไฟล์รูป
             if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-                $targetDir = "image/";
+                $targetDir = "uploads/";
                 $filename = time() . '_' . basename($_FILES['image']['name']);
                 $targetFile = $targetDir . $filename;
                 move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
@@ -64,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action) {
                         product_name = :product_name,
                         description = :description,
                         price = :price,
-                        stock = :stock
+                        stock = :stock,
+                        category_id = :category_id,
                         $imageSQL
                     WHERE product_id = :product_id";
             $stmt = $conn->prepare($sql);
@@ -73,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action) {
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':price', $price);
             $stmt->bindParam(':stock', $stock);
+            $stmt->bindParam(':category_id', $category_id);
             $stmt->bindParam(':product_id', $product_id);
             if (isset($filename)) $stmt->bindParam(':image', $filename);
 
@@ -101,12 +106,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action) {
 
 } else {
     // GET: ดึงข้อมูลสินค้า
-    $stmt = $conn->prepare("SELECT * FROM products ORDER BY product_id DESC");
-    if ($stmt->execute()) {
+    
+    // ประเภทสินค้า
+    if (isset($_GET['type']) && $_GET['type'] == 'categories') {
+        // ดึงข้อมูลประเภทสินค้า
+        $stmt = $conn->prepare("SELECT * FROM categories");
+        $stmt->execute();
+        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(["success" => true, "data" => $categories]);
+    } else {
+        // แสดงข้อมูลสินค้าทั้งหมด
+        $stmt = $conn->prepare("SELECT pd.*, ct.category_name FROM products pd INNER JOIN categories ct ON pd.category_id = ct.category_id");
+        $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(["success" => true, "data" => $products]);
-    } else {
-        echo json_encode(["success" => false, "data" => []]);
     }
+
+
+
+
 }
 ?>

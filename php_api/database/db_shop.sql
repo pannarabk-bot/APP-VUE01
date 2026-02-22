@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2026 at 12:58 PM
+-- Generation Time: Feb 22, 2026 at 01:00 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_shop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `category_name`) VALUES
+(1, 'เครื่องใช้ไฟฟ้า'),
+(2, 'เสื้อผ้า'),
+(3, 'รองเท้า');
 
 -- --------------------------------------------------------
 
@@ -46,7 +66,10 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 (3, 'John', 'Doe', '0991122334', 'johnd', 'securepwd'),
 (4, 'นารารัตน์', 'บุญขาว', '0123456789', '12345678@gmail.com', '$2y$10$4U0sRaTPtZ9iM'),
 (5, 'nararut', 'B', '0123456789', '123456789@gmail.com', '$2y$10$6P7zJsHZvCuOfvXFXlQHU.SsKO.ZNr6vVre3DtNdquD2zW5fnv1oC'),
-(7, 'nara', 'bo', '0123456789', 'nara', '$2y$10$Sg6FCAqnjeHIokXy3wY87.gzIJSupWanlW0yo.06qNpNNrhPsVzzW');
+(7, 'nara', 'bo', '0123456789', 'nara', '$2y$10$Sg6FCAqnjeHIokXy3wY87.gzIJSupWanlW0yo.06qNpNNrhPsVzzW'),
+(8, 'na', 'g', '1234', 'sdf', '$2y$10$g7Qqw0ExJMBxy6siwlgHveyd2Hh4/SA4pz8B74q9HiGclF3WkfW3.'),
+(15, 'na', 'bo', '123456', '123456', '$2y$10$Iy6y2ilUbYFE3FXCzdeCqu3/2eqpEKLvLKzAHFgpsxJYheQ5XUwyW'),
+(16, 'nararut', 'b', '123456789', 'admin', '$2y$10$YUUzZavjW68O9JR4zB8ho.nK8BOx61TND8A8E7QW2zF3OHIf/7zke');
 
 -- --------------------------------------------------------
 
@@ -108,6 +131,7 @@ CREATE TABLE `products` (
   `price` decimal(10,2) NOT NULL,
   `image` text DEFAULT NULL,
   `stock` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -115,10 +139,35 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `image`, `stock`, `created_at`) VALUES
-(00000000001, 'เสื้อยืดคอกลม', 'เสื้อยืดผ้าฝ้าย 100% สวมใส่สบาย', '199.00', 'p1.jpg', 50, '2026-01-25 10:44:24'),
-(00000000002, 'กางเกงยีนส์', 'กางเกงยีนส์ทรงกระบอก สีฟ้าอ่อน', '799.00', 'p2.jpg', 30, '2026-01-25 10:44:24'),
-(00000000003, 'รองเท้าผ้าใบ', 'รองเท้าผ้าใบสีขาว ใส่ได้ทุกโอกาส', '1299.00', 'p3.jpg', 20, '2026-01-25 10:44:24');
+INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `image`, `stock`, `category_id`, `created_at`) VALUES
+(00000000001, 'เสื้อยืดคอกลม', 'เสื้อยืดผ้าฝ้าย 100% สวมใส่สบาย', '199.00', 'p1.jpg', 50, 1, '2026-01-25 10:44:24'),
+(00000000002, 'กางเกงยีนส์', 'กางเกงยีนส์ทรงกระบอก สีฟ้าอ่อน', '799.00', 'p2.jpg', 30, 2, '2026-01-25 10:44:24'),
+(00000000003, 'รองเท้าผ้าใบ', 'รองเท้าผ้าใบสีขาว ใส่ได้ทุกโอกาส', '1299.00', 'p3.jpg', 20, 3, '2026-01-25 10:44:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `student_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `first_name`, `last_name`, `phone`, `email`) VALUES
+(1, 'John', 'Doe', '0812345678', 'john.doe@example.com'),
+(2, 'Jane', 'Smith', '0819876543', 'jane.smith@example.com'),
+(3, 'Michael', 'Brown', '0823456789', 'michael.brown@example.com'),
+(4, 'Emily', 'Johnson', '0834567890', 'emily.johnson@example.com'),
+(5, 'Chris', 'Williams', '0845678901', 'chris.williams@example.com');
 
 -- --------------------------------------------------------
 
@@ -146,6 +195,12 @@ INSERT INTO `type` (`type_id`, `type_name`) VALUES
 --
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`category_id`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -170,6 +225,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`student_id`);
+
+--
 -- Indexes for table `type`
 --
 ALTER TABLE `type`
@@ -180,10 +241,16 @@ ALTER TABLE `type`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -202,6 +269,12 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `type`
